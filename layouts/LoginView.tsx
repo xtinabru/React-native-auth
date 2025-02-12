@@ -7,6 +7,7 @@
 
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import AuthButton from "./AuthButton";
 
 interface LoginProps {
   title: string;
@@ -15,20 +16,22 @@ interface LoginProps {
 
 const LoginView = ({ title, subtitle }: LoginProps) => {
 
+  const handleLoginPress = () => {
+    console.log('Login button pressed');
+  };
+
   return (
     <View>
       <Text>{title}</Text>
       <Text>{subtitle}</Text>
       
       <Text>Email</Text>
-      <TextInput placeholder="Email" />
+      <TextInput placeholder="Email" style={{ borderBottomWidth: 1, marginBottom: 20 }} />
       
       <Text>Password</Text>
-      <TextInput placeholder="Password" secureTextEntry />
+      <TextInput placeholder="Password" secureTextEntry style={{ borderBottomWidth: 1, marginBottom: 20 }} />
       
-      <TouchableOpacity>
-        <Text>Login</Text>
-      </TouchableOpacity>
+     <AuthButton title="Login" onPress={handleLoginPress}></AuthButton>
       
     
       

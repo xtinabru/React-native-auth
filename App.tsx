@@ -8,7 +8,7 @@ import LoginView from './layouts/LoginView';
 export default function App() {
   return (
     <View style={styles.container}>
-
+    <LoginView title="Login" subtitle="Please sign in to continue"/>
 
     </View>
   );
