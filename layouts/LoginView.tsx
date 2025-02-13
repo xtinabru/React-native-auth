@@ -1,11 +1,5 @@
-// In login view you should implement:
-// · Text fields and labels for username and password.
-// · A clearly visible button for login.
-// · A clickable text for signup if user has no user account.
-// · A clickable text for password retrieval if user has forgotten password. Print to console when click happens here.
-
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import AuthButton from "./AuthButton";  
 import AuthInput from "./AuthInpput";  
 
@@ -26,17 +20,27 @@ const LoginView = ({ title, subtitle }: LoginProps) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.subtitle}>{subtitle}</Text>
-      
-      <AuthInput placeholder="Email" />
-      <AuthInput placeholder="Password" secureTextEntry />
-      
-      <AuthButton title="Login" onPress={handleLoginPress} />
-      
-      <View style={styles.footer}>
-        <Text style={styles.text}>Don't have an account? </Text>
-        <Text style={styles.link} onPress={handleSignUpPress}>Sign Up</Text>
+     
+      <Image 
+        source={require('../assets/images/orange.png')}
+        style={styles.topRightImage}
+      />
+
+  
+      <View style={styles.content}>
+        
+        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.subtitle}>{subtitle}</Text>
+        
+        <AuthInput placeholder="Email" />
+        <AuthInput placeholder="Password" secureTextEntry />
+        
+        <AuthButton title="Login" onPress={handleLoginPress} />
+        
+        <View style={styles.footer}>
+          <Text style={styles.text}>Don't have an account? </Text>
+          <Text style={styles.link} onPress={handleSignUpPress}>Sign Up</Text>
+        </View>
       </View>
     </View>
   );
@@ -45,48 +49,49 @@ const LoginView = ({ title, subtitle }: LoginProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-end',
-    backgroundColor: '#fff',
-    alignContent: 'center',
+    backgroundColor: "#fff",
+  },
+  topRightImage: {
+    position: "absolute",  
+    top: -100,            
+    left: 170,            
+    width: "100%",         
+    height: "40%",       
+    resizeMode: "stretch",   
+    opacity: 0.3,        
+  },
+  content: {
+    flex: 1,
+    justifyContent: "flex-end",
     padding: 40,
-    marginBottom: 0
   },
   title: {
     fontSize: 32,
-    fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 0,
-    alignSelf: 'flex-start',
+    fontWeight: "bold",
+    color: "#333",
   },
   subtitle: {
     fontSize: 16,
-    fontWeight: '700',
-    color: '#a5a5a5',
+    fontWeight: "700",
+    color: "#a5a5a5",
     marginTop: 10,
     marginBottom: 20,
-    alignSelf: 'flex-start',
-  },
-  button: {
-    justifyContent: 'flex-end',
-    backgroundColor: '#fea037',  
-    borderRadius: 40,
-    padding: 15,
   },
   footer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    alignSelf: 'center',
+    flexDirection: "row",
+    alignItems: "center",
+    alignSelf: "center",
     marginTop: 80,
   },
   text: {
     fontSize: 14,
-    color: '#a5a5a5',
-    fontWeight: '700',
+    color: "#a5a5a5",
+    fontWeight: "700",
   },
   link: {
     fontSize: 14,
-    color: '#fea037',
-    fontWeight: '900',
+    color: "#fea037",
+    fontWeight: "900",
   },
 });
 
