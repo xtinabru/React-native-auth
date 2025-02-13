@@ -1,33 +1,41 @@
-import { Text, TouchableOpacity, ButtonProps, StyleSheet } from 'react-native'
-import React from 'react'
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import React from 'react';
 
-interface LoginProps{
+interface ButtonProps {
   title: string;
   onPress: () => void;
 }
 
-
-const AuthButton = ({title, onPress}: ButtonProps) => {
+const AuthButton = ({ title, onPress }: ButtonProps) => {
   return (
-    <TouchableOpacity style={styles.button} onPress={onPress}>
+    <TouchableOpacity
+  style={styles.button}
+  onPress={() => {
+    console.log('Button pressed');
+    onPress();
+  }}
+>
       <Text style={styles.buttonText}>{title}</Text>
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
   button: {
+    alignSelf: 'flex-end',
     backgroundColor: '#fcc858', 
-    padding: 10,
-    borderRadius: 4,
-    alignItems: 'flex-end',
+    padding: 20,
+    borderRadius: 40,
+    width: 120,
     marginVertical: 10,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 12,
+    alignSelf: 'center',
+    textTransform: 'uppercase',
+    fontWeight: 'bold',
   },
+});
 
-})
-
-export default AuthButton
+export default AuthButton;
