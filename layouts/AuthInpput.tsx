@@ -11,8 +11,10 @@ interface AuthInputProps {
 const AuthInput = ({ placeholder, secureTextEntry, onForgotPassword }: AuthInputProps) => {
 
   const getIconName = () => {
-    if (placeholder.toLowerCase() === "email") return "mail"; // email icon
-    if (placeholder.toLowerCase() === "password") return "lock";   // password icon
+    if (placeholder.toLowerCase() === "email") return "mail"; 
+    if (placeholder.toLowerCase() === "password") return "lock";   
+    if (placeholder.toLowerCase() === "full name") return "user";
+    if (placeholder.toLowerCase() === "confirm password") return "pocket";
     return null;
   };
 

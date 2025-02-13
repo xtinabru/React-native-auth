@@ -54,11 +54,11 @@ const styles = StyleSheet.create({
   topRightImage: {
     position: "absolute",  
     top: -100,            
-    left: 170,            
+    left: 230,            
     width: "100%",         
     height: "40%",       
     resizeMode: "stretch",   
-    opacity: 0.3,        
+      
   },
   content: {
     flex: 1,
