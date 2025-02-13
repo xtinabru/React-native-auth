@@ -1,9 +1,11 @@
-import { Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 import React from 'react';
+import Icon from 'react-native-vector-icons/Feather';
 
 interface ButtonProps {
   title: string;
   onPress: () => void;
+  onForgotPassword?: () => void;
 }
 
 const AuthButton = ({ title, onPress }: ButtonProps) => {
@@ -15,7 +17,10 @@ const AuthButton = ({ title, onPress }: ButtonProps) => {
     onPress();
   }}
 >
-      <Text style={styles.buttonText}>{title}</Text>
+<View style={styles.buttonContent}>
+        <Text style={styles.buttonText}>{title}</Text>
+        <Icon name="arrow-right" size={16} color="#fff" /> 
+      </View>
     </TouchableOpacity>
   );
 };
@@ -26,8 +31,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fcc858', 
     padding: 20,
     borderRadius: 40,
-    width: 120,
+    width: 140,
     marginVertical: 10,
+  },
+  buttonContent: {
+    flexDirection: 'row', 
+    alignItems: 'center', 
+    justifyContent: 'center', 
   },
   buttonText: {
     color: '#fff',

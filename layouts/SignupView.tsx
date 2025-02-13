@@ -9,7 +9,8 @@
 // · Clickable text link to go back to sign in
 
 import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import { View, Text, StyleSheet, Image,TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/Feather";
 import AuthButton from "./AuthButton";
 import AuthInput from "./AuthInpput";
 
@@ -22,8 +23,15 @@ const SignupView = () => {
     console.log("Login link pressed");
   };
 
+  const handleBackPress = () => {
+    console.log("Back button pressed"); 
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={handleBackPress} style={styles.backButton}>
+        <Icon name="arrow-left" size={30} color="#a5a5a5" /> 
+      </TouchableOpacity>
       <Image 
         source={require('../assets/images/orange.png')}
         style={styles.topRightImage}
@@ -53,6 +61,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
+  backButton: {
+    position: "absolute",  
+    top: 40,              
+    left: 40,             
+    zIndex: 1, 
+    width: 300,  
+         
+  },
+  
   topRightImage: {
     position: "absolute",  
     top: -100,            

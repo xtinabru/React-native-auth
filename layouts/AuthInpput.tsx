@@ -6,9 +6,10 @@ interface AuthInputProps {
   placeholder: string;
   secureTextEntry?: boolean;
   onForgotPassword?: () => void;
+  isLogin?: boolean;
 }
 
-const AuthInput = ({ placeholder, secureTextEntry, onForgotPassword }: AuthInputProps) => {
+const AuthInput = ({ placeholder, secureTextEntry, onForgotPassword, isLogin  }: AuthInputProps) => {
 
   const getIconName = () => {
     if (placeholder.toLowerCase() === "email") return "mail"; 
@@ -18,22 +19,20 @@ const AuthInput = ({ placeholder, secureTextEntry, onForgotPassword }: AuthInput
     return null;
   };
 
-  
-
   return (
     <View style={styles.inputContainer}>
-    {getIconName() && (
+      {getIconName() && (
         <Icon name={getIconName()!} size={20} color="#999" style={styles.icon} />
       )}
-     
+      
       <TextInput
         placeholder={placeholder.toUpperCase()}
         secureTextEntry={secureTextEntry}
         style={[styles.input, { textTransform: 'uppercase', fontWeight: 'bold' }]}
       />
       
-      {/* Condition if the placeholder == "Password" */}
-      {placeholder === "Password" && (
+     
+      {isLogin && placeholder.toLowerCase() === "password" && (
         <TouchableOpacity onPress={onForgotPassword} style={styles.forgotContainer}>
           <Text style={styles.forgotText}>Forgot</Text>
         </TouchableOpacity>
@@ -44,7 +43,7 @@ const AuthInput = ({ placeholder, secureTextEntry, onForgotPassword }: AuthInput
 
 const styles = StyleSheet.create({
   inputContainer: {
-    position: 'relative', // to fix the link inside the input
+    position: 'relative',
     marginBottom: 20,
   },
   icon: {
@@ -69,14 +68,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 20,
     top: '50%',
-    transform: [{ translateY: -5 }], // put in the mid
+    transform: [{ translateY: -5 }],
   },
   forgotText: {
     fontSize: 12,
     color: '#fea037',  
     fontWeight: '900',
     textTransform: 'uppercase',
-    flexWrap: 'wrap'
   },
 });
 

@@ -17,6 +17,9 @@ const LoginView = ({ title, subtitle }: LoginProps) => {
   const handleSignUpPress = () => {
     console.log('Sign Up link pressed');
   };
+  const handleForgotPassword = () => {
+    console.log("Переход на восстановление пароля");
+  };
 
   return (
     <View style={styles.container}>
@@ -35,7 +38,7 @@ const LoginView = ({ title, subtitle }: LoginProps) => {
         <AuthInput placeholder="Email" />
         <AuthInput placeholder="Password" secureTextEntry />
         
-        <AuthButton title="Login" onPress={handleLoginPress} />
+        <AuthButton title="Login" onPress={handleLoginPress} onForgotPassword={handleForgotPassword} />
         
         <View style={styles.footer}>
           <Text style={styles.text}>Don't have an account? </Text>
